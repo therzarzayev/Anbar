@@ -1,0 +1,52 @@
+﻿@using EFCore.Models
+
+@model Product
+@{
+	ViewData["Title"] = "Yeni Məhsul";
+}
+
+<h1 class="mb-5">Yeni məhsul</h1>
+
+<form method="post">
+	<div class="mb-3 row">
+		<label for="inputN" class="col-sm-2 col-form-label">Məhsul adı</label>
+		<div class="col-sm-10">
+			<input type="text" asp-for="Name" required class="form-control" id="inputN">
+		</div>
+	</div>
+	<div class="mb-3 row">
+		<label for="inputD" class="col-sm-2 col-form-label">Açıqlama</label>
+		<div class="col-sm-10">
+			<input type="text" asp-for="Description" required class="form-control" id="inputD">
+		</div>
+	</div>
+	<div class="mb-3 row">
+		<label for="inputC" class="col-sm-2 col-form-label">Qiymət</label>
+		<div class="col-sm-10">
+			<input type="text" min="0" asp-for="Price" required class="form-control" id="inputC">
+		</div>
+	</div>
+	<div class="mb-3 row">
+		<label for="inputCa" class="col-sm-2 col-form-label">Kateqoriya</label>
+		<div class="col-sm-10">
+			<select asp-for="Category" asp-items="@ViewBag.Categories" class="form-control">
+				<option selected disabled>Kateqoriya seçin</option>
+			</select>
+		</div>
+	</div>
+	<div class="mb-3 row">
+		<label for="inputS" class="col-sm-2 col-form-label">Vəziyyət</label>
+		<div class="col-sm-10">
+			<select asp-for="State" asp-items="@ViewBag.States" class="form-control">
+				<option selected disabled>Vəziyyət seçin</option>
+			</select>
+		</div>
+	</div>
+	<div class="mb-3 row">
+		<label for="inputSu" class="col-sm-2 col-form-label"></label>
+		<div class="col-sm-10">
+			<input type="submit" class="btn btn-primary w-25 float-end" value="Əlavə et" id="inputSu" />
+		</div>
+	</div>
+</form>
+
