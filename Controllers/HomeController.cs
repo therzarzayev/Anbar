@@ -1,11 +1,12 @@
 ﻿using EFCore.Models;
+using EFCore.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
 
 namespace EFCore.Controllers
 {
-	public class HomeController : Controller
+    public class HomeController : Controller
 	{
 		private IProductRepository _repository;
 

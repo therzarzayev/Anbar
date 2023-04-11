@@ -11,7 +11,7 @@
 		<input class="form-control me-2" type="search" name="q" placeholder="Məhsul axtar..." aria-label="Search">
 		<button class="btn btn-primary" type="submit">Axtar</button>
 	</form>
-	<a class="btn btn-primary mb-5" asp-controller="Home" asp-action="Create">Yeni məhsul əlavə et</a>
+	<a class="btn btn-primary mb-5" asp-controller="home" asp-action="create">Yeni məhsul əlavə et</a>
 	<table class="table table-sm">
 		<thead>
 			<tr>
@@ -19,6 +19,7 @@
 				<th>Məhsul adı</th>
 				<th>Açıqlama</th>
 				<th>Qiymət</th>
+				<th>Tarix</th>
 				<th>Kateqoriya</th>
 				<th>Vəziyyət</th>
 				<th>Əlavə</th>
@@ -32,6 +33,7 @@
 					<td>@item.Name</td>
 					<td>@item.Description</td>
 					<td>@item.Price AZN</td>
+					<td>@item.Date</td>
 					<td>@item.Category</td>
 					<td>
 						@if (item.State == "Xarici anbarda")
@@ -56,8 +58,8 @@
 						}
 					</td>
 					<td>
-						<a class="btn btn-warning btn-sm" asp-controller="Home" asp-action="Update" asp-route-id="@item.Id">Update</a>
-						<a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+						<a class="btn btn-warning btn-sm" asp-controller="home" asp-action="update" asp-route-id="@item.Id">Update</a>
+						<a class="btn btn-danger btn-sm" asp-controller="home" asp-action="delete" asp-route-id="@item.Id">Delete</a>
 					</td>
 				</tr>
 			}

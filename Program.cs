@@ -1,4 +1,5 @@
-using EFCore.Models;
+using EFCore.DbOperations;
+using EFCore.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
