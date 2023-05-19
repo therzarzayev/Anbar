@@ -1,24 +1,30 @@
-﻿using EFCore.Models;
+﻿using AutoMapper;
+using EFCore.Models;
 using EFCore.Repository;
+using EFCore.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
 
 namespace EFCore.Controllers
 {
-    public class HomeController : Controller
+	public class HomeController : Controller
 	{
-		private IProductRepository _repository;
+		private readonly IMapper _mapper;
+		private readonly IProductRepository _repository;
 
-		public HomeController(IProductRepository repository)
+		public HomeController(IProductRepository repository, IMapper mapper)
 		{
 			_repository = repository;
+			_mapper = mapper;
 		}
-
-
+		[Route("/")]
+		[Route("/products")]
 		public IActionResult Index(string q)
 		{
-			var products = _repository.Products;
+			var pros = _repository.Products;
+
+			var products = _mapper.Map<List<ProductViewModel>>(pros);
 
 			if (string.IsNullOrEmpty(q))
 			{
@@ -34,6 +40,7 @@ namespace EFCore.Controllers
 		/// Create 
 		/// </summary>
 		[HttpGet]
+		[Route("/product")]
 		public IActionResult Create()
 		{
 			ViewBag.Categories = new SelectList(new List<string>
@@ -45,20 +52,13 @@ namespace EFCore.Controllers
 				"Kompüter hissələri",
 				"Yaddaş qurğuları"
 			});
-			ViewBag.States = new SelectList(new List<string>
-			{
-				"Xarici anbarda",
-				"Bəyan gözlənilir",
-				"Gömrük yoxlanışı",
-				"Çeşidlənir",
-				"Təhvil verildi"
-			});
 			return View();
 		}
 		[HttpPost]
-		public IActionResult Create(Product product)
+		[Route("/product")]
+		public IActionResult Create(ProductViewModel product)
 		{
-			_repository.CreateProduct(product);
+			_repository.CreateProduct(_mapper.Map<Product>(product));
 			return RedirectToAction("Index");
 		}
 
@@ -66,6 +66,7 @@ namespace EFCore.Controllers
 		/// Update 
 		/// </summary>
 		[HttpGet]
+		[Route("/product/update/{id}")]
 		public IActionResult Update(int id)
 		{
 			ViewBag.Categories = new SelectList(new List<string>
@@ -77,20 +78,14 @@ namespace EFCore.Controllers
 				"Kompüter hissələri",
 				"Yaddaş qurğuları"
 			});
-			ViewBag.States = new SelectList(new List<string>
-			{
-				"Xarici anbarda",
-				"Bəyan gözlənilir",
-				"Gömrük yoxlanışı",
-				"Çeşidlənir",
-				"Təhvil verildi"
-			});
-			return View(_repository.GetById(id));
+			var product = _repository.GetById(id);
+			return View(_mapper.Map<ProductViewModel>(product));
 		}
 		[HttpPost]
-		public IActionResult Update(Product product)
+		[Route("/product/update/{id}")]
+		public IActionResult Update(ProductViewModel product)
 		{
-			_repository.UpdateProduct(product);
+			_repository.UpdateProduct(_mapper.Map<Product>(product));
 			return RedirectToAction("Index");
 		}
 

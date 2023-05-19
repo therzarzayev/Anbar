@@ -1,6 +1,4 @@
-﻿@using EFCore.Models
-
-@model Product
+﻿@model ProductViewModel
 @{
 	ViewData["Title"] = "Redaktə";
 }
@@ -27,9 +25,15 @@
 		</div>
 	</div>
 	<div class="mb-3 row">
-		<label asp-for="Date" class="col-sm-2 col-form-label">Tarix</label>
+		<label asp-for="ExDate" class="col-sm-2 col-form-label">Daxilolma tarixi</label>
 		<div class="col-sm-10">
-			<input asp-for="Date" required class="form-control" value="@Model.Date">
+			<input asp-for="ExDate" class="form-control">
+		</div>
+	</div>
+	<div class="mb-3 row">
+		<label asp-for="Date" class="col-sm-2 col-form-label">Tərketmə tarixi</label>
+		<div class="col-sm-10">
+			<input asp-for="Date" class="form-control">
 		</div>
 	</div>
 	<div class="mb-3 row">
@@ -41,17 +45,9 @@
 		</div>
 	</div>
 	<div class="mb-3 row">
-		<label for="inputS" class="col-sm-2 col-form-label">Vəziyyət</label>
-		<div class="col-sm-10">
-			<select asp-for="State" asp-items="@ViewBag.States" class="form-control">
-				<option selected disabled>@Model.State</option>
-			</select>
-		</div>
-	</div>
-	<div class="mb-3 row">
 		<label for="inputSu" class="col-sm-2 col-form-label"></label>
 		<div class="col-sm-10">
-			<input type="submit" class="btn btn-primary w-25 float-end" value="Yenilə" id="inputSu" />
+			<input type="submit" class="btn btn-primary" value="Yenilə" id="inputSu" />
 		</div>
 	</div>
 </form>

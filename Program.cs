@@ -1,6 +1,7 @@
 using EFCore.DbOperations;
 using EFCore.Repository;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ var connectionString = builder.Configuration.GetConnectionString("ProductConn");
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IProductRepository,ProductRepository>();
 builder.Services.AddDbContext<PContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 
@@ -28,3 +31,4 @@ app.MapControllerRoute(
 	pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

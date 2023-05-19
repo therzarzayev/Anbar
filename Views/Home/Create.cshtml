@@ -1,6 +1,4 @@
-﻿@using EFCore.Models
-
-@model Product
+﻿@model ProductViewModel
 @{
 	ViewData["Title"] = "Yeni Məhsul";
 }
@@ -11,7 +9,7 @@
 	<div class="mb-3 row">
 		<label asp-for="Name" class="col-sm-2 col-form-label">Məhsul adı</label>
 		<div class="col-sm-10">
-			<input type="text" asp-for="Name" required class="form-control">
+			<input type="text" required asp-for="Name" class="form-control">
 		</div>
 	</div>
 	<div class="mb-3 row">
@@ -24,12 +22,13 @@
 		<label asp-for="Price" class="col-sm-2 col-form-label">Qiymət</label>
 		<div class="col-sm-10">
 			<input type="text" min="0" asp-for="Price" required class="form-control">
+			<span asp-validation-for="Price"></span>
 		</div>
 	</div>
 	<div class="mb-3 row">
-		<label asp-for="Date" class="col-sm-2 col-form-label">Tarix</label>
+		<label asp-for="ExDate" class="col-sm-2 col-form-label">Daxilolma tarixi</label>
 		<div class="col-sm-10">
-			<input asp-for="Date" required class="form-control">
+			<input asp-for="ExDate" required class="form-control">
 		</div>
 	</div>
 	<div class="mb-3 row">
@@ -41,17 +40,9 @@
 		</div>
 	</div>
 	<div class="mb-3 row">
-		<label asp-for="State" class="col-sm-2 col-form-label">Vəziyyət</label>
-		<div class="col-sm-10">
-			<select asp-for="State" asp-items="@ViewBag.States" class="form-control">
-				<option selected disabled>Vəziyyət seçin</option>
-			</select>
-		</div>
-	</div>
-	<div class="mb-3 row">
 		<label for="inputSu" class="col-sm-2 col-form-label"></label>
 		<div class="col-sm-10">
-			<input type="submit" class="btn btn-primary w-25 float-end" value="Əlavə et" id="inputSu" />
+			<input type="submit" class="btn btn-primary" value="Əlavə et" id="inputSu" />
 		</div>
 	</div>
 </form>

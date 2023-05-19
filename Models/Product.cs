@@ -1,5 +1,4 @@
-﻿
-namespace EFCore.Models
+﻿namespace EFCore.Models
 {
 	public class Product
 	{
@@ -8,7 +7,7 @@ namespace EFCore.Models
 		public string? Description { get; set; }
 		public decimal? Price { get; set; }
 		public DateTime? Date { get; set; }
-		public string? Category { get; set; }
-		public string? State { get; set; }
+		public DateTime? ExDate { get; set; }
+        public string? Category { get; set; }
 	}
 }

@@ -13,7 +13,7 @@ namespace EFCore.Repository
 
         public List<Product> Products
         {
-            get { return _context.Products.ToList(); }
+            get{ return _context.Products.ToList(); }
         }
 
         public void CreateProduct(Product product)

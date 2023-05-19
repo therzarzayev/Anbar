@@ -1,5 +1,5 @@
-﻿@using EFCore.Models
-@model IEnumerable<Product>
+﻿@using System.Globalization;
+@model IEnumerable<ProductViewModel>
 
 @{
     ViewData["Title"] = "Admin Panel";
@@ -19,10 +19,10 @@
 				<th>Məhsul adı</th>
 				<th>Açıqlama</th>
 				<th>Qiymət</th>
-				<th>Tarix</th>
+				<th>Daxilolma tarixi</th>
+				<th>Tərketmə tarixi</th>
 				<th>Kateqoriya</th>
-				<th>Vəziyyət</th>
-				<th>Əlavə</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,33 +33,26 @@
 					<td>@item.Name</td>
 					<td>@item.Description</td>
 					<td>@item.Price AZN</td>
-					<td>@item.Date</td>
+					@if (item.ExDate != null)
+					{
+						<td>@(((DateTime)item.ExDate).ToString("d MMM, yyyy HH:mm", new CultureInfo("az-AZ")))</td>
+					}
+					else
+					{
+						<td>@item.ExDate</td>
+					}
+					@if (item.Date!=null)
+					{
+						<td><span class="badge rounded-pill badge-success">@(((DateTime)item.Date).ToString("d MMM, yyyy HH:mm", new CultureInfo("az-AZ")))</span></td>
+					}
+					else
+					{
+						<td><span class="badge rounded-pill badge-warning">Anbarda</span></td>
+					}
 					<td>@item.Category</td>
 					<td>
-						@if (item.State == "Xarici anbarda")
-						{
-							<span class="badge rounded-pill bg-secondary">@item.State</span>
-						}
-						else if (item.State == "Bəyan gözlənilir")
-						{
-							<span class="badge rounded-pill bg-danger">@item.State</span>
-						}
-						else if (item.State == "Gömrük yoxlanışı")
-						{
-							<span class="badge rounded-pill bg-primary">@item.State</span>
-						}
-						else if (item.State == "Çeşidlənir")
-						{
-							<span class="badge rounded-pill bg-warning">@item.State</span>
-						}
-						else
-						{
-							<span class="badge rounded-pill bg-success">@item.State</span>
-						}
-					</td>
-					<td>
-						<a class="btn btn-warning btn-sm" asp-controller="home" asp-action="update" asp-route-id="@item.Id">Update</a>
-						<a class="btn btn-danger btn-sm" asp-controller="home" asp-action="delete" asp-route-id="@item.Id">Delete</a>
+						<a class="btn btn-warning me-2 btn-sm" asp-controller="home" asp-action="update" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i> Redaktə</a>
+						<a class="btn btn-danger btn-sm" asp-controller="home" asp-action="delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i> Sil</a>
 					</td>
 				</tr>
 			}

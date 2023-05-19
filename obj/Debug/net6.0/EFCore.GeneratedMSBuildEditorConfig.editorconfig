@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\therzarzayev\Desktop\BED\EFCore
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/therzarzayev/Desktop/BED/EFCore/Views/Baggage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFnZ2FnZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/therzarzayev/Desktop/BED/EFCore/Views/Home/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -26,6 +30,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/therzarzayev/Desktop/BED/EFCore/Views/Home/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/therzarzayev/Desktop/BED/EFCore/Views/Shared/_BagLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9CYWdMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/therzarzayev/Desktop/BED/EFCore/Views/Shared/_ValidationScriptsPartial.cshtml]
